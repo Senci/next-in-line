@@ -1,0 +1,33 @@
+{
+  "name": "@repo/shared-types",
+  "description": "Shared types of next-in-line.",
+  "version": "1.0.0",
+  "author": "Senči",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "tsc --build --verbose tsconfig.esm.json tsconfig.cjs.json"
+  },
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@strapi/types": "^5.6.0"
+  },
+  "ts-standard": {
+    "ignore": [
+      "dist",
+      "src/**/*.js"
+    ]
+  }
+}
