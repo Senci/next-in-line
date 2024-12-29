@@ -13,12 +13,10 @@ export default {
   attributes: {
     number: {
       type: 'integer',
-      required: true,
       description: 'Auto-incremental number part of the ticket',
     },
     fullNumber: {
       type: 'string',
-      required: true,
       unique: true,
       description: 'The full ticket number (prefix + number)',
     },
@@ -37,7 +35,6 @@ export default {
     },
     secret: {
       type: 'string',
-      required: true,
       private: true,
       description: 'Secret code for viewing this ticket without authentication',
     },

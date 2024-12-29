@@ -5,12 +5,6 @@ import { ref } from 'vue'
 import type { QueueStore } from '.'
 import { strapi } from '@/services/strapi'
 
-// const VITE_API_URL = import.meta.env.VITE_BACKEND_URL
-// const baseURL = `${VITE_API_URL}`
-
-// const sdk = strapiSDK({ baseURL })
-// const queueCollection = sdk.collection('queues')
-
 export const useQueueStore = defineStore('queue', (): QueueStore => {
   const queues = ref<Queue[]>([])
 

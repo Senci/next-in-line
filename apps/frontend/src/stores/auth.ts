@@ -8,7 +8,6 @@ const VITE_API_URL = import.meta.env.VITE_BACKEND_URL
 const baseURL = `${VITE_API_URL}`
 
 const sdk = strapiSDK({ baseURL })
-sdk.
 const queueCollection = sdk.collection('queues')
 
 export const useTicketStore = defineStore('ticket', (): QueueStore => {

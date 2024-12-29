@@ -24,10 +24,43 @@ export default factories.createCoreController('api::ticket.ticket', () => ({
 
   async create(ctx: Context) {
     const { data } = ctx.request.body
+    strapi.log.info(JSON.stringify(data, null, 2))
+
+    if (!data.queue) {
+      strapi.log.error('Queue is required to create a ticket.')
+      throw new Error('Queue is required to create a ticket.')
+    }
+
+    // Fetch the queue using the Query API
+    const queue = await strapi.db.query('api::queue.queue').findOne({
+      where: { id: data.queue }
+    })
+
+    if (!queue) {
+      throw new Error('Queue not found.')
+    }
+
+    // Fetch the latest ticket for the queue using the Query API
+    const ticketsInQueue = await strapi.db.query('api::ticket.ticket').count({
+      where: data
+    })
+
+    // Calculate the next number
+    data.number = ticketsInQueue + 1
+    strapi.log.info(`Next ticket number: ${data.number}`)
+
+    // Format the full number with the queue prefix
+    data.fullNumber = `${queue.prefix}-${String(data.number).padStart(3, '0')}`
+
+    // Generate a simple random secret
+    data.secret = (Math.random() * 10000000).toString().substring(2, 6)
+
+    // overwrite the state
+    data.state = 'waiting'
+
     const createdTicket = await strapi.documents('api::ticket.ticket').create({
       data,
-      populate: { queue: true }, // Populate queue on creation if needed
-    }) as Ticket & { queue: Queue }
+    }) as Ticket
     ctx.body = createdTicket
   },
 
@@ -47,11 +80,14 @@ export default factories.createCoreController('api::ticket.ticket', () => ({
     ctx.body = { data, meta }
   },
 
-  // async findOne(ctx: Context) {
-  //   const { id } = ctx.params
-  //   const populatedResult = await strapi.documents('api::ticket.ticket').findOne(id, {
-  //     populate: { queue: true },
-  //   }) as Ticket & { queue: Queue }
-  //   ctx.body = sanitizeTicket(populatedResult)
-  // },
+  async update(ctx: Context) {
+    const { data } = ctx.request.body
+
+    const { id: documentId } = ctx.params
+    const { state } = data
+    strapi.log.info(JSON.stringify({ documentId, state }, null, 2))
+    const update = await strapi.documents('api::ticket.ticket').update({ documentId, data: { state } })
+    strapi.log.info(JSON.stringify(update, null, 2))
+    ctx.body = update
+  }
 }))

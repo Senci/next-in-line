@@ -1,4 +1,4 @@
-import { configurePublicPermissions } from "./bootstrap/permissions"
+import { configureIsAuthenticatedPermissions, configurePublicPermissions } from "./bootstrap/permissions"
 import { createAdminUser } from "./bootstrap/users"
 
 
@@ -7,5 +7,6 @@ export default {
     strapi.log.info('Bootstrapping your Strapi app...')
     await createAdminUser()
     await configurePublicPermissions()
+    await configureIsAuthenticatedPermissions()
   }
 }

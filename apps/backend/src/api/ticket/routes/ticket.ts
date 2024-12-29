@@ -24,5 +24,11 @@ export default {
       handler: 'api::ticket.ticket.findOne',
       config: {},
     },
+    {
+      method: 'PUT',
+      path: '/tickets/:id',
+      handler: 'api::ticket.ticket.update',
+      config: {},
+    }
   ],
 } as const

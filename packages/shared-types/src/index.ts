@@ -4,6 +4,7 @@ export type DateTimeValue = string | Date
 
 export interface BaseEntity {
   id?: ID
+  documentId?: string
   createdAt?: DateTimeValue
   updatedAt?: DateTimeValue
 }

@@ -30,7 +30,6 @@
       <v-col>
         <v-card title="New!"
                 subtitle="Creates a new ticket and puts it in the queue."
-                color="primary"
                 @click="createTicket()"
                 ripple
                 variant="outlined"
@@ -52,7 +51,7 @@
         <v-card title="Next!"
                 subtitle="Creates a new ticket and puts it in the queue."
                 color="primary"
-                @click="undefined"
+                @click="nextInLine"
                 ripple
                 variant="outlined"
                 flat>
@@ -76,13 +75,10 @@
              :cols="tickets.length <= 12 ? 0 : 1"
              class="text-center">
         <v-card :title="ticket.number"
+                :subtitle="ticket.state"
                 :color="(index % 2) ? 'primary' : 'secondary'"
                 variant="outlined"
                 flat>
-          <!-- <v-card-actions class="justify-center">
-            <v-btn icon="mdi-trash-can-outline">
-            </v-btn>
-          </v-card-actions> -->
         </v-card>
       </v-col>
     </v-row>
@@ -111,6 +107,10 @@ async function createTicket() {
   const queue = await ticketStore.createTicket(queues.value.find((q: Queue) => q.prefix == queuePrefix).id)
   console.log({ queue })
   return queue
+}
+
+async function nextInLine() {
+  await ticketStore.nextInLine()
 }
 
 onMounted(async () => {

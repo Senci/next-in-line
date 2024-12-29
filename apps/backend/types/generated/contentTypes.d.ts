@@ -414,22 +414,18 @@ export interface ApiTicketTicket extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    fullNumber: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    fullNumber: Schema.Attribute.String & Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::ticket.ticket'
     > &
       Schema.Attribute.Private;
-    number: Schema.Attribute.Integer & Schema.Attribute.Required;
+    number: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     queue: Schema.Attribute.Relation<'manyToOne', 'api::queue.queue'> &
       Schema.Attribute.Required;
-    secret: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Private;
+    secret: Schema.Attribute.String & Schema.Attribute.Private;
     state: Schema.Attribute.Enumeration<['waiting', 'called', 'served']> &
       Schema.Attribute.DefaultTo<'waiting'>;
     updatedAt: Schema.Attribute.DateTime;
