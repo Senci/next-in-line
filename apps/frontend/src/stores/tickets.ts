@@ -1,21 +1,32 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { type Ticket } from '@repo/shared-types'
-import { strapiSDK } from '@strapi/sdk-js'
-import type { TicketStore } from './types'
-
-const VITE_API_URL = import.meta.env.VITE_BACKEND_URL
-const baseURL = `${VITE_API_URL}`
-
-const sdk = strapiSDK({ baseURL })
-const ticketCollection = sdk.collection('tickets')
+import type { TicketStore } from '.'
+import { strapi } from '@/services/strapi'
 
 export const useTicketStore = defineStore('ticket', (): TicketStore => {
   const tickets = ref<Ticket[]>([])
+  const pollingInterval = 5000
+  const isPollingActive = ref(false)
+  const pollingIntervalId = ref<ReturnType<typeof setTimeout> | null>(null)
 
   async function createTicket(queueId: string) {
     try {
-      const createdTicket = (await ticketCollection.create({ queue: queueId })).data as unknown as Ticket
+      const identifier = 'xxxx'
+      const password = 'xxxx'
+
+      try {
+        const loginResponse = await strapi.login({
+          identifier,
+          password
+        })
+        console.log('loginResponse')
+        console.log(loginResponse)
+      } catch (err) {
+        console.log('loginError')
+        console.error(err)
+      }
+      const createdTicket = (await strapi.create<Ticket>('ticket', { queue: queueId })).data
       console.log('Ticket created successfully:', createdTicket)
       return createdTicket
     } catch (error) {
@@ -25,10 +36,31 @@ export const useTicketStore = defineStore('ticket', (): TicketStore => {
   }
 
   async function fetchTickets() {
-    const waitingTickets = (await ticketCollection.find()).data as unknown as Ticket[]
-
-    tickets.value = waitingTickets
+    console.log('Fetching tickets...')
+    tickets.value = (await strapi.find<Ticket[]>('tickets')).data
   }
 
-  return { tickets, createTicket, fetchTickets }
+  function startPolling() {
+    if (!isPollingActive.value) {
+      isPollingActive.value = true
+      pollingIntervalId.value = setInterval(fetchTickets, pollingInterval)
+      console.log('Polling started with interval: ', pollingIntervalId.value)
+    } else {
+      console.warn('Polling already active with interval: ', pollingIntervalId.value)
+    }
+  }
+
+  function stopPolling() {
+    if (pollingIntervalId.value !== null) {
+      const intervalId = pollingIntervalId.value
+      console.log(pollingIntervalId.value)
+      clearInterval(pollingIntervalId.value)
+      console.log(pollingIntervalId.value)
+      console.log('Polling stopped with interval: ', intervalId)
+      isPollingActive.value = false
+      pollingIntervalId.value = null
+    }
+  }
+
+  return { tickets, createTicket, fetchTickets, startPolling, stopPolling }
 })

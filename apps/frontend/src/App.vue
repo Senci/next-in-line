@@ -1,16 +1,38 @@
 <template>
   <v-app id="next-in-line">
-    <v-navigation-drawer v-model="drawer" temporary>
-      <v-list density="compact" nav>
-        <v-list-item @click="navigate('/')" prepend-icon="mdi-cat" title="Home" value="home"></v-list-item>
-        <v-list-item @click="navigate('/clerk')" prepend-icon="mdi-owl" title="Clerk" value="about"></v-list-item>
+    <v-navigation-drawer v-model="drawer"
+                         temporary>
+      <v-list nav>
+        <v-list-item prepend-icon="mdi-cat"
+                     title="Home"
+                     value="home"
+                     to="/" />
+        <v-list-item prepend-icon="mdi-owl"
+                     title="Dashboard"
+                     value="dashboard"
+                     to="/dashboard" />
+        <v-divider />
+      </v-list>
+      <v-list v-if="queues">
+        <v-list-item>
+          <v-list-item-subtitle>Venues</v-list-item-subtitle>
+        </v-list-item>
+        <v-list-item v-for="queue in queues"
+                     :key="queue.prefix"
+                     :title="queue.name"
+                     :to="`/tickets/${queue.prefix}`" />
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar>
-      <v-app-bar-nav-icon icon="mdi-infinity" @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-app-bar-title>Next In Line</v-app-bar-title>
+    <v-app-bar density="compact"
+               flat
+               app
+               location="bottom">
+      <v-app-bar-nav-icon icon="mdi-infinity"
+                          @click="drawer = !drawer" />
+      <v-toolbar-title class="font-space-mono">
+        siebdruck@38c3$<span class="blink">▮</span>
+      </v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -20,12 +42,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { router } from './plugins/router'
+import { computed, onMounted, ref } from 'vue'
+import { useQueueStore } from './stores/queues'
 
 const drawer = ref(null)
 
-function navigate(to: string) {
-  router.push({ name: to })
-}
+const queueStore = useQueueStore()
+const queues = computed(() => queueStore.queues)
+
+onMounted(() => {
+  queueStore.fetchQueues()
+})
 </script>
+
+<style>
+.blink {
+  animation: blinker 1s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+</style>

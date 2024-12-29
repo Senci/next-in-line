@@ -11,10 +11,6 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(vuetify)
-try {
-  app.use(router)
-} catch (e) {
-  console.log(e)
-}
+app.use(router)
 
 app.mount('#app')

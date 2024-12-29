@@ -38,7 +38,7 @@ export default factories.createCoreController('api::ticket.ticket', () => ({
       filters: { state: 'waiting' },
       populate: {
         queue: {
-          fields: []
+          fields: ['prefix']
         }
       },
     }

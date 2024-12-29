@@ -91,6 +91,9 @@ importers:
       pinia:
         specifier: ^2.2.6
         version: 2.3.0(typescript@5.6.3)(vue@3.5.13(typescript@5.6.3))
+      strapi-sdk-js:
+        specifier: ^2.3.3
+        version: 2.3.3
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.6.3)
@@ -194,7 +197,7 @@ importers:
     dependencies:
       '@strapi/types':
         specifier: ^5.6.0
-        version: 5.6.0(@types/node@22.10.2)(typescript@5.7.2)
+        version: 5.6.0(typescript@5.7.2)
     devDependencies:
       typescript:
         specifier: ^5.7.2
@@ -2521,6 +2524,9 @@ packages:
   '@types/is-hotkey@0.1.10':
     resolution: {integrity: sha512-RvC8KMw5BCac1NvRRyaHgMMEtBaZ6wh0pyPTBu7izn4Sj/AX9Y4aXU5c7rX8PnM/knsuUpC1IeoBkANtxBypsQ==}
 
+  '@types/js-cookie@3.0.6':
+    resolution: {integrity: sha512-wkw9yd1kEXOPnvEeEV1Go1MmxtBJL0RR79aOTAApecWFVu7w0NNXNqhcWgvw2YgZDYadliXkl14pa3WXw5jlCQ==}
+
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
@@ -3080,6 +3086,9 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
+
+  axios@0.27.2:
+    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
 
   axios@1.7.4:
     resolution: {integrity: sha512-DukmaFRnY6AzAALSH4J2M3k6PkaC+MfaAGdEERRWcC9q3/TWQwLpHR8ZRLKTdQ3aBDL64EdluRDjJqKw+BPZEw==}
@@ -3689,6 +3698,9 @@ packages:
   define-properties@1.2.1:
     resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==}
     engines: {node: '>= 0.4'}
+
+  defu@5.0.1:
+    resolution: {integrity: sha512-EPS1carKg+dkEVy3qNTqIdp2qV7mUP08nIsupfwQpz++slCVRw7qbQyWvSTig+kFPwz2XXp5/kIIkH+CwrJKkQ==}
 
   degenerator@5.0.1:
     resolution: {integrity: sha512-TllpMR/t0M5sqCXfj85i4XaAzxmS5tVA16dqvdkMwGmzI+dXLXnw3J+3Vdv7VKw+ThlTMboK6i9rnZ6Nntj5CQ==}
@@ -5083,6 +5095,10 @@ packages:
   joycon@3.1.1:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
     engines: {node: '>=10'}
+
+  js-cookie@3.0.5:
+    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
+    engines: {node: '>=14'}
 
   js-sha3@0.8.0:
     resolution: {integrity: sha512-gF1cRrHhIzNfToc802P800N8PpXS+evLLXfsVpowqmAFR9uwbi89WvXg2QspOmXL8QL86J4T1EpFu+yUkwJY3Q==}
@@ -6953,6 +6969,9 @@ packages:
     resolution: {integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==}
     engines: {node: '>=18'}
 
+  strapi-sdk-js@2.3.3:
+    resolution: {integrity: sha512-q7IcW+joeqM5aVIaO35u/MU4AVk87GuCQs96t8oVdtT/xterP8uVylESsbs7f79R2HvFtwYLuHtDB4zr2hSXAw==}
+
   stream-chain@2.2.5:
     resolution: {integrity: sha512-1TJmBx6aSWqZ4tx7aTpBDXK0/e2hhcNSTV8+CbFJtDjbb+I1mZ8lHit0Grw9GRT+6JbIrrDd8esncgBi8aBXGA==}
 
@@ -7384,6 +7403,9 @@ packages:
 
   uc.micro@1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
+
+  ufo@1.5.4:
+    resolution: {integrity: sha512-UsUk3byDzKd04EyoZ7U4DOlxQaD14JUKQl6/P7wiX4FNvUfm3XL246n9W5AmqwW5RSFJ27NAuM0iLscAOYUiGQ==}
 
   uglify-js@3.19.3:
     resolution: {integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==}
@@ -9625,19 +9647,6 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.17.10
 
-  '@rushstack/node-core-library@5.10.1(@types/node@22.10.2)':
-    dependencies:
-      ajv: 8.13.0
-      ajv-draft-04: 1.0.0(ajv@8.13.0)
-      ajv-formats: 3.0.1(ajv@8.13.0)
-      fs-extra: 7.0.1
-      import-lazy: 4.0.0
-      jju: 1.4.0
-      resolve: 1.22.10
-      semver: 7.5.4
-    optionalDependencies:
-      '@types/node': 22.10.2
-
   '@rushstack/terminal@0.14.4(@types/node@20.17.10)':
     dependencies:
       '@rushstack/node-core-library': 5.10.1(@types/node@20.17.10)
@@ -9645,25 +9654,9 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.17.10
 
-  '@rushstack/terminal@0.14.4(@types/node@22.10.2)':
-    dependencies:
-      '@rushstack/node-core-library': 5.10.1(@types/node@22.10.2)
-      supports-color: 8.1.1
-    optionalDependencies:
-      '@types/node': 22.10.2
-
   '@rushstack/ts-command-line@4.23.2(@types/node@20.17.10)':
     dependencies:
       '@rushstack/terminal': 0.14.4(@types/node@20.17.10)
-      '@types/argparse': 1.0.38
-      argparse: 1.0.10
-      string-argv: 0.3.2
-    transitivePeerDependencies:
-      - '@types/node'
-
-  '@rushstack/ts-command-line@4.23.2(@types/node@22.10.2)':
-    dependencies:
-      '@rushstack/terminal': 0.14.4(@types/node@22.10.2)
       '@types/argparse': 1.0.38
       argparse: 1.0.10
       string-argv: 0.3.2
@@ -10111,29 +10104,6 @@ snapshots:
       lodash: 4.17.21
       semver: 7.5.4
       umzug: 3.8.1(@types/node@20.17.10)
-    transitivePeerDependencies:
-      - '@types/node'
-      - better-sqlite3
-      - mysql
-      - mysql2
-      - pg
-      - pg-native
-      - sqlite3
-      - supports-color
-      - tedious
-
-  '@strapi/database@5.6.0(@types/node@22.10.2)':
-    dependencies:
-      '@paralleldrive/cuid2': 2.2.2
-      '@strapi/utils': 5.6.0
-      ajv: 8.16.0
-      date-fns: 2.30.0
-      debug: 4.3.4
-      fs-extra: 11.2.0
-      knex: 3.0.1(better-sqlite3@11.3.0)
-      lodash: 4.17.21
-      semver: 7.5.4
-      umzug: 3.8.1(@types/node@22.10.2)
     transitivePeerDependencies:
       - '@types/node'
       - better-sqlite3
@@ -10612,12 +10582,12 @@ snapshots:
       - tedious
       - typescript
 
-  '@strapi/types@5.6.0(@types/node@22.10.2)(typescript@5.7.2)':
+  '@strapi/types@5.6.0(typescript@5.7.2)':
     dependencies:
       '@casl/ability': 6.5.0
       '@koa/cors': 5.0.0
       '@koa/router': 12.0.2
-      '@strapi/database': 5.6.0(@types/node@22.10.2)
+      '@strapi/database': 5.6.0(@types/node@20.17.10)(better-sqlite3@11.3.0)
       '@strapi/logger': 5.6.0
       '@strapi/permissions': 5.6.0
       '@strapi/utils': 5.6.0
@@ -10991,6 +10961,8 @@ snapshots:
       rxjs: 7.8.1
 
   '@types/is-hotkey@0.1.10': {}
+
+  '@types/js-cookie@3.0.6': {}
 
   '@types/json-schema@7.0.15': {}
 
@@ -11764,6 +11736,13 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.0.0
 
+  axios@0.27.2:
+    dependencies:
+      follow-redirects: 1.15.9(debug@4.3.4)
+      form-data: 4.0.1
+    transitivePeerDependencies:
+      - debug
+
   axios@1.7.4(debug@4.3.4):
     dependencies:
       follow-redirects: 1.15.9(debug@4.3.4)
@@ -12437,6 +12416,8 @@ snapshots:
       define-data-property: 1.1.4
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
+
+  defu@5.0.1: {}
 
   degenerator@5.0.1:
     dependencies:
@@ -14137,6 +14118,8 @@ snapshots:
   jose@4.15.9: {}
 
   joycon@3.1.1: {}
+
+  js-cookie@3.0.5: {}
 
   js-sha3@0.8.0: {}
 
@@ -16186,6 +16169,18 @@ snapshots:
 
   stdin-discarder@0.2.2: {}
 
+  strapi-sdk-js@2.3.3:
+    dependencies:
+      '@types/js-cookie': 3.0.6
+      '@types/qs': 6.9.17
+      axios: 0.27.2
+      defu: 5.0.1
+      js-cookie: 3.0.5
+      qs: 6.13.1
+      ufo: 1.5.4
+    transitivePeerDependencies:
+      - debug
+
   stream-chain@2.2.5: {}
 
   stream-json@1.8.0:
@@ -16686,22 +16681,14 @@ snapshots:
 
   uc.micro@1.0.6: {}
 
+  ufo@1.5.4: {}
+
   uglify-js@3.19.3:
     optional: true
 
   umzug@3.8.1(@types/node@20.17.10):
     dependencies:
       '@rushstack/ts-command-line': 4.23.2(@types/node@20.17.10)
-      emittery: 0.13.1
-      fast-glob: 3.3.2
-      pony-cause: 2.1.11
-      type-fest: 4.30.2
-    transitivePeerDependencies:
-      - '@types/node'
-
-  umzug@3.8.1(@types/node@22.10.2):
-    dependencies:
-      '@rushstack/ts-command-line': 4.23.2(@types/node@22.10.2)
       emittery: 0.13.1
       fast-glob: 3.3.2
       pony-cause: 2.1.11
