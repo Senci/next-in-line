@@ -6,11 +6,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "strapi build",
-    "deploy": "strapi deploy",
+    "build": "dotenv -e .env strapi build",
+    "deploy": "dotenv -e .env strapi deploy",
     "dev": "dotenv -e .env strapi develop",
-    "start": "strapi start",
-    "strapi": "strapi"
+    "start": "dotenv -e .env strapi start",
+    "strapi": "dotenv -e .env strapi"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.6.0",
