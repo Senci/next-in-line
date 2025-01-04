@@ -7,14 +7,16 @@
   "private": true,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "src/types/index.d.ts",
   "scripts": {
     "dev": "tsc --build --verbose tsconfig.esm.json tsconfig.cjs.json -w",
     "build": "tsc --build --verbose tsconfig.esm.json tsconfig.cjs.json"
   },
   "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.js"
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
   },
   "files": [
     "dist"
