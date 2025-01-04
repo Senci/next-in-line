@@ -6,7 +6,7 @@
     "declarationMap": true,
     "strict": true,
     "target": "ES2015",
-    "module": "ESNext",
+    "module": "NodeNext",
     "lib": ["ES2015", "DOM"],
     "esModuleInterop": true,
     "skipLibCheck": true

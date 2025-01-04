@@ -9,7 +9,9 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules"
+    "clean": "pnpm run clean-packages && pnpm run clean-dist",
+    "clean-packages": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
+    "clean-dist": "rm -rf dist && pnpm -r exec rm -rf dist"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.15.0",
