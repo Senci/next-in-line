@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test
+    name: Build
     timeout-minutes: 15
     runs-on: ubuntu-latest
     # To use Remote Caching, uncomment the next lines and follow the steps below.
@@ -43,11 +43,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Debug - List shared-types dist
-        run: ls -al packages/shared-types/dist
-
-      - name: Debug - List frontend node_modules/@repo
-        run: ls -al apps/frontend/node_modules/@repo
-
       - name: Build
         run: pnpm build
+
+      - name: Debug - List shared-types dist
+        run: ls -al packages/shared-types/dist
+        if: always()
