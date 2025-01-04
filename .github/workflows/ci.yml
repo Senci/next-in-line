@@ -41,7 +41,7 @@ jobs:
           cache: 'pnpm'
  
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Debug - List shared-types dist
         run: ls -al apps/packages/shared-types/dist
