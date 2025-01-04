@@ -53,3 +53,9 @@ jobs:
  
       - name: Build
         run: pnpm build
+      
+      - name: Debug - List node_modules
+        run: ls -al apps/frontend/node_modules/@repo
+      
+      - name: Debug - List node_modules
+        run: ls -al apps/packages/shared-types/node_modules/@repo
