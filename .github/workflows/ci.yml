@@ -44,7 +44,7 @@ jobs:
         run: pnpm install
 
       - name: Debug - List shared-types dist
-        run: ls -al apps/packages/shared-types/dist
+        run: ls -al packages/shared-types/dist
 
       - name: Debug - List frontend node_modules/@repo
         run: ls -al apps/frontend/node_modules/@repo
