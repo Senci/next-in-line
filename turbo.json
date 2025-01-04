@@ -16,6 +16,16 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+
+    "frontend#build": {
+      "dependsOn": ["@repo/shared-types#build"]
+    },
+    "backend#build": {
+      "dependsOn": [
+        "frontend#build",
+        "@repo/shared-types#build"
+      ]
     }
   }
 }
