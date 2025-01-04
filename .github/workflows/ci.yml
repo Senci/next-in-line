@@ -28,7 +28,15 @@ jobs:
           path: .turbo
           key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-turbo-
+            ${{ runner.os }}-turbo
+
+      - name: Cache turbo build setup
+        uses: actions/cache@v4
+        with: 
+          path: packages
+          key: ${{ runner.os }}-turbo-packages${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-packages
  
       - uses: pnpm/action-setup@v3
         with:
