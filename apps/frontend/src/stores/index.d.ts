@@ -2,7 +2,6 @@ import type { Ticket } from '@repo/shared-types'
 
 export interface TicketStore {
   tickets: Ref<Ticket[]>
-  login: (identifier: string, password: string) => void
   logout: () => void
   createTicket: (queueId: string) => Promise<Ticket>
   fetchTickets: () => Promise<void>
@@ -18,4 +17,9 @@ export interface QueueStore {
 
 export interface UiStore {
   title: Ref<string>
+}
+
+export interface AuthStore {
+  login: (identifier: string, password: string) => Promise<void>
+  logout: () => Promise<void>
 }

@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue'
 import DashboardView from '@/views/DashboardView.vue'
 import DashboardSelectionView from '@/views/DashboardSelectionView.vue'
 import TicketsView from '@/views/TicketsView.vue'
+import LoginView from '@/views/LoginView.vue'
 
 const routes = [
   {
@@ -14,6 +15,11 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard-selection',
     component: DashboardSelectionView,
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => LoginView,
   },
   {
     path: '/dashboard/:queueName',

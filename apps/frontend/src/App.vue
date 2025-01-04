@@ -2,7 +2,7 @@
   <v-app id="next-in-line">
     <v-navigation-drawer v-model="drawer"
                          temporary>
-      <v-list nav>
+      <v-list>
         <v-list-item prepend-icon="mdi-cat"
                      title="Home"
                      value="home"
@@ -22,6 +22,17 @@
                      :title="queue.name"
                      :to="`/tickets/${queue.prefix}`" />
       </v-list>
+
+      <template v-slot:append>
+        <v-list>
+          <v-list-item title="loogin"
+                       to="/login"
+                       prepend-icon="mdi-login" />
+          <v-list-item title="Logout"
+                       @click="logout"
+                       prepend-icon="mdi-logout" />
+        </v-list>
+      </template>
     </v-navigation-drawer>
 
     <v-app-bar density="compact"
@@ -44,11 +55,17 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { useQueueStore } from './stores/queues'
+import { useAuthStore } from './stores/auth'
 
 const drawer = ref(null)
 
 const queueStore = useQueueStore()
 const queues = computed(() => queueStore.queues)
+
+
+async function logout() {
+  await useAuthStore().logout()
+}
 
 onMounted(() => {
   queueStore.fetchQueues()

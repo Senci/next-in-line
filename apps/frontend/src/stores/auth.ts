@@ -1,21 +1,27 @@
-import type { Queue } from '@repo/shared-types'
-import { strapiSDK } from '@strapi/sdk-js'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
-import type { QueueStore } from '.'
+import { strapi } from '@/services/strapi'
+import type { AuthStore } from '.'
 
-const VITE_API_URL = import.meta.env.VITE_BACKEND_URL
-const baseURL = `${VITE_API_URL}`
+export const useAuthStore = defineStore('auth', (): AuthStore => {
 
-const sdk = strapiSDK({ baseURL })
-const queueCollection = sdk.collection('queues')
-
-export const useTicketStore = defineStore('ticket', (): QueueStore => {
-  const queues = ref<Queue[]>([])
-
-  async function fetchQueues() {
-    queues.value = (await queueCollection.find()).data as unknown as Queue[]
+  async function login(identifier: string, password: string) {
+    try {
+      await strapi.login({
+        identifier,
+        password
+      })
+    } catch (err) {
+      console.error(err)
+    }
   }
 
-  return { queues, fetchQueues }
+  async function logout() {
+    try {
+      await strapi.logout()
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  return { login, logout }
 })

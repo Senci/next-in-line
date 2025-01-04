@@ -9,22 +9,9 @@ export const useTicketStore = defineStore('ticket', (): TicketStore => {
   const pollingInterval = 5000
   const isPollingActive = ref(false)
   const pollingIntervalId = ref<ReturnType<typeof setTimeout> | null>(null)
-  login('gaenge', 'gaenge')
-
-  async function login(identifier: string, password: string) {
-    try {
-      await strapi.login({
-        identifier,
-        password
-      })
-    } catch (err) {
-      console.error(err)
-    }
-  }
 
   async function createTicket(queueId: string) {
     try {
-      await login('gaenge', 'gaenge')
       const queue = queueId
       const createdTicket = (await strapi.create<Ticket>('tickets', { queue })).data
       console.log('Ticket created successfully:', createdTicket)
@@ -72,7 +59,6 @@ export const useTicketStore = defineStore('ticket', (): TicketStore => {
 
   return {
     tickets,
-    login,
     createTicket,
     nextInLine,
     fetchTickets,

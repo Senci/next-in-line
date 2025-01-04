@@ -1,5 +1,4 @@
 import type { Queue } from '@repo/shared-types'
-// import { strapiSDK } from '@strapi/sdk-js'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { QueueStore } from '.'

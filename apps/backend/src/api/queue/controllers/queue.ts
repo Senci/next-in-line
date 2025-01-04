@@ -1,12 +1,9 @@
-import { Queue } from '@repo/shared-types'
+import { Queue, QueueServiceParams } from '@repo/shared-types'
 import { factories } from '@strapi/strapi'
-import { Modules } from '@strapi/types'
 import { Context } from 'koa'
-
 
 export default factories.createCoreController('api::queue.queue', () => ({
   async find(ctx: Context) {
-    type QueueServiceParams = Modules.Documents.ServiceParams<'api::queue.queue'>
     const query: QueueServiceParams['findMany'] = {
       fields: ['name', 'prefix']
     }
